@@ -1,7 +1,29 @@
 from email import message
+import json
+from textwrap import indent
+from django.http import HttpResponse, JsonResponse
+from requests import Response
 from rest_framework import generics
+
+from api.dto.res_api_house import HouseRequestDTOEncoder, HouseResponseDTO
 from .models import Messages, House
 from .serializers import MessagesSerializer, HouseSerializer
+from api import serializers
+
+
+def render(data,message,status_code, accepted_media_type=None, renderer_context=None):
+        our_response_dict = {
+            'version': '1.0',
+            'data': {},
+            'message': '',
+        }
+        
+        our_response_dict['data'] = data
+        our_response_dict['statusCode'] = status_code
+        our_response_dict['message'] = message
+        data = our_response_dict
+
+        return json.dumps(data)
 
 class MessagesList(generics.ListCreateAPIView):
     serializer_class = MessagesSerializer
@@ -17,6 +39,7 @@ class MessagesList(generics.ListCreateAPIView):
 class MessagesDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MessagesSerializer
     queryset = Messages.objects.all()
+    
 
 
 
@@ -28,3 +51,12 @@ class HouseList(generics.ListCreateAPIView):
 class HouseDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = HouseSerializer
     queryset = House.objects.all()
+
+
+def HouseCheckByNumber(request, number_house):
+    serializer_class = HouseSerializer
+    respone = 0
+    queryset = House.objects.filter(number=number_house).values()
+    return HttpResponse(queryset)
+    
+    

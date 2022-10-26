@@ -79,6 +79,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+REST_FRAMEWORK = {
+'DEFAULT_PARSER_CLASSES': (
+    'rest_framework.parsers.FormParser',
+    'rest_framework.parsers.MultiPartParser',
+    'rest_framework.parsers.JSONParser',
+    )
+}
+
 # CORS
 
 CORS_ALLOWED_ORIGINS = [
@@ -114,7 +122,7 @@ CORS_ALLOW_HEADERS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test.accounts',
+        'NAME': 'subito.message',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',

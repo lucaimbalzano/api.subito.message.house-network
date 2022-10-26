@@ -1,0 +1,68 @@
+[
+  {
+    "_id": "03921d4d-46e9-4ce2-b051-21a0b384378a",
+    "colId": "f34738c5-2022-4ad7-855d-83d7bbf7cca6",
+    "containerId": "",
+    "name": "POST:API/HOUSE",
+    "url": "http://127.0.0.1:8000/api/house/",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-10-25T12:02:30.008Z",
+    "modified": "2022-10-25T12:11:49.737Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n    \"name\": \"Ferrari\",\r\n    \"price\": \"1.200 \\u20ac\",\r\n    \"space\": \"NOT SPECIFIED\",\r\n    \"rooms\": \"NOT SPECIFIED\",\r\n    \"floor\": \"NOT SPECIFIED\",\r\n    \"description\": \"Affittasi arredato al terzo piano con ascensore e portineria cosi composto: anticamera, soggiorno con cucina a vista e balcone, camera da letto , bagno finestrato,solaio.Riscaldamento centralizzato.Tranquillit\\u00e0 assoluta.Vicinanza Universit\\u00e0 Bocconi e linee tramviarie 3-15-90/91.\\nVicinanza a tutte le attivit\\u00e0 commerciali. Libero dal 1.12.2022.\",\r\n    \"title\": \"Bilocale ristrutturato in casa d'epoca\",\r\n    \"url\": \"https://www.subito.it/appartamenti/bilocale-ristrutturato-in-casa-d-epoca-milano-461252322.htm\",\r\n    \"number\": \"3487616749\",\r\n    \"vetrina\": false,\r\n    \"advertising\": \"RENT\",\r\n    \"bathrooms\": \"NOT SPECIFIED\",\r\n    \"parking\": \"NOT SPECIFIED\",\r\n    \"energyClass\": \"NOT SPECIFIED\",\r\n    \"energyHeating\": \"NOT SPECIFIED\",\r\n    \"urlUserProfile\": \"NOT SPECIFIED\"\r\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "4b2f5a0c-9946-42f4-b47a-f66a42d995af",
+    "colId": "f34738c5-2022-4ad7-855d-83d7bbf7cca6",
+    "containerId": "",
+    "name": "PUT:API/HOUSE",
+    "url": "http://127.0.0.1:8000/api/house/6/",
+    "method": "PUT",
+    "sortNum": 20000,
+    "created": "2022-10-25T12:25:46.290Z",
+    "modified": "2022-10-25T12:25:46.290Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n    \"name\": \"REAL01\",\r\n    \"price\": \"1.200 \\u20ac\",\r\n    \"space\": \"NOT SPECIFIED\",\r\n    \"rooms\": \"NOT SPECIFIED\",\r\n    \"floor\": \"NOT SPECIFIED\",\r\n    \"description\": \"Affittasi arredato al terzo piano con ascensore e portineria cosi composto: anticamera, soggiorno con cucina a vista e balcone, camera da letto , bagno finestrato,solaio.Riscaldamento centralizzato.Tranquillit\\u00e0 assoluta.Vicinanza Universit\\u00e0 Bocconi e linee tramviarie 3-15-90/91.\\nVicinanza a tutte le attivit\\u00e0 commerciali. Libero dal 1.12.2022.\",\r\n    \"title\": \"Bilocale ristrutturato in casa d'epoca\",\r\n    \"url\": \"https://www.subito.it/appartamenti/bilocale-ristrutturato-in-casa-d-epoca-milano-461252322.htm\",\r\n    \"number\": \"3487616749\",\r\n    \"vetrina\": false,\r\n    \"advertising\": \"RENT\",\r\n    \"bathrooms\": \"NOT SPECIFIED\",\r\n    \"parking\": \"NOT SPECIFIED\",\r\n    \"energyClass\": \"NOT SPECIFIED\",\r\n    \"energyHeating\": \"NOT SPECIFIED\",\r\n    \"urlUserProfile\": \"NOT SPECIFIED\"\r\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "134a36a4-b55a-4c40-86fc-0e2835287444",
+    "colId": "f34738c5-2022-4ad7-855d-83d7bbf7cca6",
+    "containerId": "",
+    "name": "GET:API/HOUSE/CHECK/NUMBER",
+    "url": "http://127.0.0.1:8000/api/house/check/35889900982/",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-10-26T13:58:07.684Z",
+    "modified": "2022-10-26T14:54:14.870Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "4b8a3b6f-42d4-4adf-a047-ffdd3025aa71",
+    "colId": "f34738c5-2022-4ad7-855d-83d7bbf7cca6",
+    "containerId": "",
+    "name": "GET:API/HOUSE/ID",
+    "url": "http://127.0.0.1:8000/api/house/1",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2022-10-26T14:47:56.576Z",
+    "modified": "2022-10-26T14:48:16.070Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]

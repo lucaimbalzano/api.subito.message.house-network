@@ -1,3 +1,4 @@
+from email.policy import default
 from enum import unique
 from unittest.util import _MAX_LENGTH
 from django.db import models
@@ -18,6 +19,8 @@ class House(models.Model):
     urlUserProfile = models.CharField(max_length=1000)
     url = models.CharField(max_length=1000)
     number = models.CharField(unique=True,max_length=20)
+    vetrina = models.BooleanField(default=False)
+    advertising = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
