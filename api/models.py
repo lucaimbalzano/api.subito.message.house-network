@@ -13,7 +13,7 @@ class House(models.Model):
     bathrooms = models.CharField(max_length=20)
     description = models.CharField(max_length=5000)
     title = models.CharField(max_length=100)
-    parking = models.CharField(max_length=20)
+    parking = models.CharField(max_length=200)
     energyClass = models.CharField(max_length=20)
     energyHeating = models.CharField(max_length=20)
     urlUserProfile = models.CharField(max_length=1000)
