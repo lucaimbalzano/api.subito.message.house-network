@@ -18,10 +18,9 @@ class House(models.Model):
     energyHeating = models.CharField(max_length=20)
     urlUserProfile = models.CharField(max_length=1000)
     url = models.CharField(max_length=1000)
-    number = models.CharField(unique=True,max_length=20)
+    number = models.CharField(max_length=20)
     vetrina = models.BooleanField(default=False)
     advertising = models.CharField(max_length=100)
-
     def __str__(self):
         return self.name
 
