@@ -1,7 +1,10 @@
 from email import message
+from functools import reduce
 import json
 from textwrap import indent
 from django.http import HttpResponse, JsonResponse
+from django.db.models import Q
+import operator
 from requests import Response
 from rest_framework import generics
 
@@ -57,6 +60,15 @@ def HouseCheckByNumber(request, number_house):
     serializer_class = HouseSerializer
     respone = 0
     queryset = House.objects.filter(number=number_house).values()
+    return HttpResponse(queryset)
+
+
+def HouseCheckByNumberAndAvertising(request, number_house, advertising_house):
+    serializer_class = HouseSerializer
+    respone = 0
+    q_list = [Q(number=number_house), Q(advertising=advertising_house)]
+    queryset = House.objects.filter(reduce(operator.and_, q_list)).values()
+    
     return HttpResponse(queryset)
     
     
