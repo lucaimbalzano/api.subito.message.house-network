@@ -9,6 +9,10 @@ urlpatterns = [
     path('house/', HouseList.as_view()),
     path('house/<int:pk>/', HouseDetail.as_view()),
     path('house/check/<number_house>/', views.HouseCheckByNumber),
-    path('house/check/<number_house>/<advertising_house>', views.HouseCheckByNumberAndAvertising),
+    path('house/check/vetrina/<number_house>/<vetrina_house>', views.HouseCheckByNumberAndVetrina),
+    path('house/check/vetrina/<vetrina_house>', views.HouseCheckByVetrina),
+    path('house/check/advertising/<advertising_house>', views.HouseCheckByAdvertising),
+    path('house/check/advertising/<number_house>/<advertising_house>', views.HouseCheckByNumberAndAvertising),
+    # path('house/check/price/<price_house>/rooms/<rooms_house>', views.HouseCheckPriceAndRooms),
    
 ]

@@ -3,7 +3,7 @@ from functools import reduce
 import json
 from textwrap import indent
 from django.http import HttpResponse, JsonResponse
-from django.db.models import Q
+from django.db.models import Q, When, Case, BooleanField, Value
 import operator
 from requests import Response
 from rest_framework import generics
@@ -63,6 +63,16 @@ def HouseCheckByNumber(request, number_house):
     return HttpResponse(queryset)
 
 
+
+
+
+def HouseCheckByAdvertising(request,advertising_house):
+    serializer_class = HouseSerializer
+    respone = 0
+    queryset = House.objects.filter(advertising=advertising_house).values()
+    
+    return HttpResponse(queryset)
+
 def HouseCheckByNumberAndAvertising(request, number_house, advertising_house):
     serializer_class = HouseSerializer
     respone = 0
@@ -70,5 +80,32 @@ def HouseCheckByNumberAndAvertising(request, number_house, advertising_house):
     queryset = House.objects.filter(reduce(operator.and_, q_list)).values()
     
     return HttpResponse(queryset)
+
+
+# def HouseCheckPriceAndRooms(request, price_house,rooms_house):
+#     queryset =   House.objects.filter(price=price_house, age=rooms_house).annotate(
+#                     house_price_rooms=Case(
+#                         When(price=price_house, then=)),
+#                         default=Value(False),
+#                         output_field=BooleanField(),
+#                     ),
+#                 )
+#     return HttpResponse(queryset)
+
+
+
+def HouseCheckByVetrina(request,vetrina_house):
+    serializer_class = HouseSerializer
+    respone = 0
+    queryset = House.objects.filter(vetrina=vetrina_house).values()
     
+    return HttpResponse(queryset)
+
+def HouseCheckByNumberAndVetrina(request, number_house, vetrina_house):
+    serializer_class = HouseSerializer
+    respone = 0
+    q_list = [Q(number=number_house), Q(vetrina=vetrina_house)]
+    queryset = House.objects.filter(reduce(operator.and_, q_list)).values()
+    
+    return HttpResponse(queryset)
     
