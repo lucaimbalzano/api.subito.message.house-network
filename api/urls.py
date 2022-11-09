@@ -1,11 +1,19 @@
 from django.urls import path
-from .views import MessagesList, MessagesDetail, HouseList, HouseDetail, HouseCheckByNumber, HouseCheckByNumberAndAvertising
+from .views import MessagesList, MessagesDetail, HouseList, HouseDetail, HouseCheckByNumber, HouseCheckByNumberAndAvertising, TrackProcessList, TrackProcessDetail, StateMachineProcessList, StateMachineProcessDetail
 from api import views
 
 
 urlpatterns = [
+
+    path('track/', TrackProcessList.as_view()),
+    path('track/<int:pk>', TrackProcessDetail.as_view()),
+
+    path('state/', StateMachineProcessList.as_view()),
+    path('state/<int:pk>', StateMachineProcessDetail.as_view()),
+
     path('messages/', MessagesList.as_view()),
     path('messages/<int:pk>/', MessagesDetail.as_view()),
+
     path('house/', HouseList.as_view()),
     path('house/<int:pk>/', HouseDetail.as_view()),
     path('house/check/<number_house>/', views.HouseCheckByNumber),
@@ -14,5 +22,5 @@ urlpatterns = [
     path('house/check/advertising/<advertising_house>', views.HouseCheckByAdvertising),
     path('house/check/advertising/<number_house>/<advertising_house>', views.HouseCheckByNumberAndAvertising),
     # path('house/check/price/<price_house>/rooms/<rooms_house>', views.HouseCheckPriceAndRooms),
-   
+
 ]

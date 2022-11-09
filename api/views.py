@@ -9,8 +9,8 @@ from requests import Response
 from rest_framework import generics
 
 from api.dto.res_api_house import HouseRequestDTOEncoder, HouseResponseDTO
-from .models import Messages, House
-from .serializers import MessagesSerializer, HouseSerializer
+from .models import Messages, House, TrackProcess, StateMachineProcess
+from .serializers import MessagesSerializer, HouseSerializer, TrackProcessSerializer, StateMachineProcessSerializer
 from api import serializers
 
 
@@ -27,6 +27,39 @@ def render(data,message,status_code, accepted_media_type=None, renderer_context=
         data = our_response_dict
 
         return json.dumps(data)
+
+
+class TrackProcessList(generics.ListCreateAPIView):
+    serializer_class = TrackProcessSerializer
+    queryset = TrackProcess.objects.all()
+
+class TrackProcessDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = TrackProcessSerializer
+    queryset = TrackProcess.objects.all()
+
+
+
+
+
+
+class StateMachineProcessList(generics.ListCreateAPIView):
+    serializer_class = StateMachineProcessSerializer
+
+    def get_queryset(self):
+        queryset = Messages.objects.all()
+        trackProcess = self.request.query_params.get('trackprocess')
+        if trackProcess is not None:
+            queryset = queryset.filter(processId=trackProcess)
+        return queryset
+class StateMachineProcessDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = StateMachineProcessSerializer
+    queryset = TrackProcess.objects.all()
+
+
+
+
+
+
 
 class MessagesList(generics.ListCreateAPIView):
     serializer_class = MessagesSerializer
@@ -47,6 +80,8 @@ class MessagesDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 
+
+
 class HouseList(generics.ListCreateAPIView):
     serializer_class = HouseSerializer
     queryset = House.objects.all()
@@ -54,6 +89,11 @@ class HouseList(generics.ListCreateAPIView):
 class HouseDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = HouseSerializer
     queryset = House.objects.all()
+
+
+
+
+# HOUSE CUSTOM API
 
 
 def HouseCheckByNumber(request, number_house):
