@@ -8,12 +8,12 @@
     "method": "POST",
     "sortNum": 15000,
     "created": "2022-10-25T12:02:30.008Z",
-    "modified": "2022-11-08T21:54:11.272Z",
+    "modified": "2022-11-11T23:42:29.071Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"name\": \"Test01_SALE\",\n    \"price\": \"1200\",\n    \"space\": \"NOT SPECIFIED\",\n    \"rooms\": \"NOT SPECIFIED\",\n    \"floor\": \"NOT SPECIFIED\",\n    \"description\": \"Affittasi arredato al terzo piano con ascensore e portineria cosi composto: anticamera, soggiorno con cucina a vista e balcone, camera da letto , bagno finestrato,solaio.Riscaldamento centralizzato.Tranquillit\\u00e0 assoluta.Vicinanza Universit\\u00e0 Bocconi e linee tramviarie 3-15-90/91.\\nVicinanza a tutte le attivit\\u00e0 commerciali. Libero dal 1.12.2022.\",\n    \"title\": \"Bilocale ristrutturato in casa d'epoca\",\n    \"url\": \"https://www.subito.it/appartamenti/bilocale-ristrutturato-in-casa-d-epoca-milano-461252322.htm\",\n    \"number\": \"3337616700\",\n    \"vetrina\": true,\n    \"advertising\": \"SALE\",\n    \"bathrooms\": \"NOT SPECIFIED\",\n    \"parking\": \"NOT SPECIFIED\",\n    \"energyClass\": \"NOT SPECIFIED\",\n    \"energyHeating\": \"NOT SPECIFIED\",\n    \"urlUserProfile\": \"NOT SPECIFIED\"\n}",
+      "raw": "{\n    \"name\": \"Test02_SALE\",\n    \"price\": \"1200000\",\n    \"space\": \"NOT SPECIFIED\",\n    \"rooms\": \"NOT SPECIFIED\",\n    \"floor\": \"NOT SPECIFIED\",\n    \"description\": \"Affittasi arredato al terzo piano con ascensore e portineria cosi composto: anticamera, soggiorno con cucina a vista e balcone, camera da letto , bagno finestrato,solaio.Riscaldamento centralizzato.Tranquillit\\u00e0 assoluta.Vicinanza Universit\\u00e0 Bocconi e linee tramviarie 3-15-90/91.\\nVicinanza a tutte le attivit\\u00e0 commerciali. Libero dal 1.12.2022.\",\n    \"title\": \"Bilocale ristrutturato in casa d'epoca\",\n    \"url\": \"https://www.subito.it/appartamenti/bilocale-ristrutturato-in-casa-d-epoca-milano-461252322.htm\",\n    \"number\": \"3337616700\",\n    \"vetrina\": true,\n    \"advertising\": \"SALE\",\n    \"bathrooms\": \"3\",\n    \"parking\": \"Privato\",\n    \"energyClass\": \"A\",\n    \"energyHeating\": \"Autonomo\",\n    \"urlUserProfile\": \"NOT SPECIFIED\",\n    \"location\": \"MILANO (MI)\"\n}",
       "form": []
     },
     "tests": []

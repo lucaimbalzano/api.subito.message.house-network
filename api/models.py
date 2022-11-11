@@ -23,6 +23,7 @@ class House(models.Model):
     number = models.CharField(max_length=20)
     vetrina = models.BooleanField(default=False)
     advertising = models.CharField(max_length=100)
+    location = models.CharField(max_length=150, default='NOT SPECIFIED')
     def __str__(self):
         return self.name
 
