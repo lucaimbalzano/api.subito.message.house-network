@@ -98,11 +98,11 @@
     "colId": "f34738c5-2022-4ad7-855d-83d7bbf7cca6",
     "containerId": "",
     "name": "GET:API/HOUSE/CHECK/NUMBER/ADVERTISING",
-    "url": "http://127.0.0.1:8000/api/house/check/advertising/3311011258/RENT",
+    "url": "http://127.0.0.1:8000/api/house/check/advertising/3337616700/SALE",
     "method": "GET",
     "sortNum": 35000,
     "created": "2022-11-08T20:19:57.522Z",
-    "modified": "2022-11-08T21:29:48.117Z",
+    "modified": "2022-11-15T11:31:49.292Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -260,6 +260,77 @@
     "modified": "2022-11-08T23:55:29.489Z",
     "headers": [],
     "params": [],
+    "tests": []
+  },
+  {
+    "_id": "64425f46-4c43-4c47-8427-6137387c2033",
+    "colId": "674cb369-a4e1-494b-92e7-d63960630d3b",
+    "containerId": "",
+    "name": "GET::API/MESSAGES",
+    "url": "http://127.0.0.1:8000/api/messages",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2022-11-15T11:24:36.180Z",
+    "modified": "2022-11-15T11:29:16.954Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "34d5848a-6fcd-4a94-9fa7-57d0e6e8c740",
+    "colId": "674cb369-a4e1-494b-92e7-d63960630d3b",
+    "containerId": "",
+    "name": "POST::API/MESSAGES",
+    "url": "http://127.0.0.1:8000/api/messages/",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-11-15T11:24:36.186Z",
+    "modified": "2022-11-15T11:28:51.329Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n        \"id\": 2,\r\n        \"messageName\": \"SALES\",\r\n        \"dateAdded\": \"2022-11-15T11:28:01.971135Z\",\r\n        \"message\": \"Buonasera\",\r\n        \"numberSent\": 1\r\n    }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7beb74bf-7b8a-4341-8346-18ef995d518e",
+    "colId": "674cb369-a4e1-494b-92e7-d63960630d3b",
+    "containerId": "",
+    "name": "DELETE::API/MESSAGES",
+    "url": "http://127.0.0.1:8000/api/messages/2",
+    "method": "DELETE",
+    "sortNum": 30000,
+    "created": "2022-11-15T11:24:36.187Z",
+    "modified": "2022-11-15T13:07:27.233Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": " {\n        \"numPage\": 20,\n        \"numCard\": 30,\n        \"errorStack\": \"NO ERROR\",\n        \"dateStarted\": \"2022-11-15T00:49:00Z\",\n        \"dateFinished\": null,\n        \"options\": \"\"\n    }",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "03856205-7f09-4494-9507-cfa5ba24b144",
+    "colId": "674cb369-a4e1-494b-92e7-d63960630d3b",
+    "containerId": "",
+    "name": "PUT::API/MESSAGES",
+    "url": "http://127.0.0.1:8000/api/messages/2/",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2022-11-15T11:24:36.188Z",
+    "modified": "2022-11-15T11:30:25.999Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n        \"id\": 2,\r\n        \"messageName\": \"SALES\",\r\n        \"dateAdded\": \"2022-11-15T11:28:01.971135Z\",\r\n        \"message\": \"Buongiorno\",\r\n        \"numberSent\": 1\r\n    }",
+      "form": []
+    },
     "tests": []
   }
 ]
