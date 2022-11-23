@@ -168,11 +168,11 @@
     "colId": "7df053b8-b2ac-4e30-b803-7fd7a5c23f6d",
     "containerId": "",
     "name": "GET::API/TRACK",
-    "url": "http://127.0.0.1:8000/api/track",
+    "url": "http://127.0.0.1:8000/api/track/2",
     "method": "GET",
     "sortNum": 10000,
     "created": "2022-11-08T23:48:38.204Z",
-    "modified": "2022-11-08T23:48:38.204Z",
+    "modified": "2022-11-23T15:36:23.852Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -186,12 +186,12 @@
     "method": "POST",
     "sortNum": 20000,
     "created": "2022-11-08T23:51:28.410Z",
-    "modified": "2022-11-09T00:24:34.111Z",
+    "modified": "2022-11-23T11:31:30.728Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": " {\n        \"numPage\": 20,\n        \"numCard\": 30,\n        \"errorStack\": \"ERROR\",\n        \"dateStarted\": \"2022-11-15T00:49:00Z\",\n        \"dateFinished\":null,\n        \"options\": \"\"\n    }",
+      "raw": "{\r\n    \"identifierProcess\": \"ID::2022-11-23 12:29:10.530077\",\r\n    \"numPage\": 20,\r\n    \"numCard\": 30,\r\n    \"errorStack\": \"NO ERROR\",\r\n    \"dateStarted\": \"2022-11-23T13:31:00Z\",\r\n    \"dateFinished\": null,\r\n    \"options\": \"\",\r\n    \"seconds_execution\": \"\",\r\n    \"minutes_execution\": \"\"\r\n}",
       "form": []
     },
     "tests": []
@@ -201,11 +201,11 @@
     "colId": "7df053b8-b2ac-4e30-b803-7fd7a5c23f6d",
     "containerId": "",
     "name": "DELETE::API/TRACK",
-    "url": "http://127.0.0.1:8000/api/track/1",
+    "url": "http://127.0.0.1:8000/api/track/5",
     "method": "DELETE",
     "sortNum": 30000,
     "created": "2022-11-08T23:52:52.039Z",
-    "modified": "2022-11-09T00:23:45.715Z",
+    "modified": "2022-11-23T15:00:01.752Z",
     "headers": [],
     "params": [],
     "body": {
@@ -239,11 +239,11 @@
     "colId": "7df053b8-b2ac-4e30-b803-7fd7a5c23f6d",
     "containerId": "",
     "name": "GET::API/STATE",
-    "url": "http://127.0.0.1:8000/api/state",
+    "url": "http://127.0.0.1:8000/api/state/1",
     "method": "GET",
     "sortNum": 50000,
     "created": "2022-11-08T23:54:53.057Z",
-    "modified": "2022-11-08T23:55:15.988Z",
+    "modified": "2022-11-23T15:36:47.499Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -252,12 +252,12 @@
     "_id": "5460c14b-3c6f-4c7a-86ee-90760047c6ea",
     "colId": "7df053b8-b2ac-4e30-b803-7fd7a5c23f6d",
     "containerId": "",
-    "name": "GET::API/TRACK Copy Copy",
-    "url": "http://127.0.0.1:8000/api/state",
+    "name": "GET::API/STATE/LAST",
+    "url": "http://127.0.0.1:8000/api/state/",
     "method": "GET",
     "sortNum": 60000,
     "created": "2022-11-08T23:55:29.489Z",
-    "modified": "2022-11-08T23:55:29.489Z",
+    "modified": "2022-11-23T15:40:02.078Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -331,6 +331,34 @@
       "raw": "{\r\n        \"id\": 2,\r\n        \"messageName\": \"SALES\",\r\n        \"dateAdded\": \"2022-11-15T11:28:01.971135Z\",\r\n        \"message\": \"Buongiorno\",\r\n        \"numberSent\": 1\r\n    }",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "f42ae98e-e1b4-485b-89a3-dc1e6d1d50f5",
+    "colId": "7df053b8-b2ac-4e30-b803-7fd7a5c23f6d",
+    "containerId": "",
+    "name": "GET::API/TRACK/LAST",
+    "url": "http://127.0.0.1:8000/api/track/last",
+    "method": "GET",
+    "sortNum": 15000,
+    "created": "2022-11-23T11:31:41.879Z",
+    "modified": "2022-11-23T14:52:26.315Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "d52f7c88-75b7-47c9-8c9c-ddd28da7e9d1",
+    "colId": "7df053b8-b2ac-4e30-b803-7fd7a5c23f6d",
+    "containerId": "",
+    "name": "GET::API/TRACK/IDENTIFIERPROC",
+    "url": "http://127.0.0.1:8000/api/track/ID::2022-11-23-12:50:03.471691",
+    "method": "GET",
+    "sortNum": 17500,
+    "created": "2022-11-23T11:38:41.074Z",
+    "modified": "2022-11-23T11:59:07.798Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

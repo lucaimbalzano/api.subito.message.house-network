@@ -7,9 +7,12 @@ urlpatterns = [
 
     path('track/', TrackProcessList.as_view()),
     path('track/<int:pk>', TrackProcessDetail.as_view()),
+    path('track/last/', views.latest_track_process),
+    # path('track/<identifier_process>', views.get_by_identifier_proc),
 
     path('state/', StateMachineProcessList.as_view()),
     path('state/<int:pk>', StateMachineProcessDetail.as_view()),
+    path('state/last/', views.latest_state_machine),
 
     path('messages/', MessagesList.as_view()),
     path('messages/<int:pk>/', MessagesDetail.as_view()),

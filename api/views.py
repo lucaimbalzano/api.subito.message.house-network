@@ -36,7 +36,39 @@ class TrackProcessList(generics.ListCreateAPIView):
 class TrackProcessDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TrackProcessSerializer
     queryset = TrackProcess.objects.all()
+    
+# def get_by_identifier_proc(request, identifier_process):
+#     queryset = TrackProcess.objects.filter(identifierProcess=identifier_process).values()
+#     return HttpResponse(queryset)
 
+def latest_track_process(request):
+    querysetTrackProcess = None
+    try:
+        if 0 != len(TrackProcess.objects.values()):
+            querysetTrackProcess = TrackProcess.objects.latest('identifierProcess')
+        else:
+            querysetTrackProcess = 0
+    except Exception as e:
+        querysetTrackProcess = str(e)
+        pass
+    if querysetTrackProcess is not None and querysetTrackProcess != 0:
+        return HttpResponse(querysetTrackProcess.identifierProcess
+                            # TrackProcess(
+                            #                 str(querysetTrackProcess.id)+querysetTrackProcess.identifierProcess,
+                            #                 querysetTrackProcess.numPage,
+                            #                 querysetTrackProcess.numCard,
+                            #                 querysetTrackProcess.errorStack,
+                            #                 querysetTrackProcess.dateStarted,
+                            #                 querysetTrackProcess.dateFinished,
+                            #                 querysetTrackProcess.options,
+                            #                 querysetTrackProcess.seconds_execution,
+                            #                 querysetTrackProcess.minutes_execution
+                            #             )
+                            )
+    elif querysetTrackProcess == 0:
+        return HttpResponse('No elements found')
+    else:
+        return HttpResponse('Error quile retriving last trackprocess,'+querysetTrackProcess)
 
 
 
@@ -46,15 +78,24 @@ class StateMachineProcessList(generics.ListCreateAPIView):
     serializer_class = StateMachineProcessSerializer
 
     def get_queryset(self):
-        queryset = Messages.objects.all()
-        trackProcess = self.request.query_params.get('trackprocess')
-        if trackProcess is not None:
-            queryset = queryset.filter(processId=trackProcess)
+        queryset = StateMachineProcess.objects.all()
+        # state_machine = self.request.query_params.get('statemachineprocess')
+        # if state_machine is not None:
+        #     queryset = queryset.filter(id_state_machine=trackProcess)
         return queryset
 class StateMachineProcessDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StateMachineProcessSerializer
-    queryset = TrackProcess.objects.all()
-
+    queryset = StateMachineProcess.objects.all()
+    
+def latest_state_machine(self):
+    queryset = None
+    try:
+        queryset = StateMachineProcess.objects.latest('id_state_machine').id_state_machine
+    except Exception as e:
+        queryset = str(e)
+        pass
+    
+    return HttpResponse(queryset)
 
 
 

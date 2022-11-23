@@ -66,7 +66,10 @@ $ django-admin startapp api
 
 make a file to edit db
 ```
-$ python3 manage.py makemigrations
+to get init DB use
+$ python3 manage.py makemigrations api
+
+to apply all db structure use
 $ python3 manage.py migrate
 
 ```

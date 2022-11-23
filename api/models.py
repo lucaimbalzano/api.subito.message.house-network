@@ -3,6 +3,7 @@
 import datetime
 from email.policy import default
 from enum import unique
+import random
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 # Create your models here.
@@ -39,27 +40,30 @@ class Messages(models.Model):
 
 
 class TrackProcess(models.Model):
-    default_idProc = 'ID::'+ str(datetime.datetime.now())
-    identifierProcess = models.CharField(max_length=1000, blank=False, null=False, default=default_idProc)
+    # default_idProc = 'ID::'+ str(datetime.datetime.now()).split(' ')[0]+'-'+str(random.randrange(999, 999999))
+    identifierProcess = models.AutoField(primary_key=True)
     numPage = models.IntegerField(default=20)
     numCard = models.IntegerField(default=33)
     errorStack = models.CharField(max_length=10000, default='NO ERROR')
     dateStarted = models.DateTimeField(default=datetime.datetime.now)
     dateFinished = models.DateTimeField(default=None, blank=True, null=True)
     options = models.CharField(max_length=200, default=None, blank=True, null=True)
+    seconds_execution = models.CharField(max_length=100, default=None, blank=True, null=True)
+    minutes_execution = models.CharField(max_length=100, default=None, blank=True, null=True)
     def __str__(self):
-        return self.identifierProcess
+        return self.options
     
 class StateMachineProcess(models.Model):
-    class StatesType(models.TextChoices):
-       ACTIVE = 'ACTIVE', _('ACTIVE')
-       PAUSE = 'PAUSE', _('PAUSE')
-       STOP = 'STOP', _('STOP')
-
-
+    # class StatesType(models.TextChoices):
+    #    ACTIVE = 'ACTIVE', _('ACTIVE')
+    #    PAUSE = 'PAUSE', _('PAUSE')
+    #    STOP = 'STOP', _('STOP')
     # state = models.CharField(choices=StatesType.choices,default=StatesType.STOP, max_length=50)
+    id_state_machine = models.AutoField(primary_key=True)
     state = models.CharField(unique=True, max_length=10)
-    processId = models.ForeignKey(TrackProcess, on_delete = models.CASCADE)
+    processId = models.OneToOneField(TrackProcess, on_delete = models.CASCADE, unique=True)
+    def __str__(self):
+        return self.state
 
 
 
