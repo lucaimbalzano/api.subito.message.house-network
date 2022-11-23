@@ -60,7 +60,7 @@ class StateMachineProcess(models.Model):
     #    STOP = 'STOP', _('STOP')
     # state = models.CharField(choices=StatesType.choices,default=StatesType.STOP, max_length=50)
     id_state_machine = models.AutoField(primary_key=True)
-    state = models.CharField(unique=True, max_length=10)
+    state = models.CharField(max_length=10)
     processId = models.OneToOneField(TrackProcess, on_delete = models.CASCADE, unique=True)
     def __str__(self):
         return self.state
