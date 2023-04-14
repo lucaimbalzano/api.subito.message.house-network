@@ -9,11 +9,13 @@ $ cd api.subito.message.house-network
 ```
 
 create virtual environment
-
 ```
 $ python3 -m venv env
+
+windows:
 $ .\env\Scripts\activate 
-```
+linux:
+$source .\env\bin\activate
 or 
 ```
 (if you haven't pipenv)
