@@ -9,7 +9,7 @@ from requests import Response
 from rest_framework import generics
 
 from api.dto.res_api_house import HouseRequestDTOEncoder, HouseResponseDTO
-from .models import Messages, House, TrackProcess, StateMachineProcess
+from .models import Messages, House, TrackProcess, MachineProcess
 from .serializers import MessagesSerializer, HouseSerializer, TrackProcessSerializer, StateMachineProcessSerializer
 from api import serializers
 
@@ -78,19 +78,19 @@ class StateMachineProcessList(generics.ListCreateAPIView):
     serializer_class = StateMachineProcessSerializer
 
     def get_queryset(self):
-        queryset = StateMachineProcess.objects.all()
+        queryset = MachineProcess.objects.all()
         # state_machine = self.request.query_params.get('statemachineprocess')
         # if state_machine is not None:
         #     queryset = queryset.filter(id_state_machine=trackProcess)
         return queryset
 class StateMachineProcessDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StateMachineProcessSerializer
-    queryset = StateMachineProcess.objects.all()
+    queryset = MachineProcess.objects.all()
     
 def latest_state_machine(self):
     queryset = None
     try:
-        queryset = StateMachineProcess.objects.latest('id_state_machine').id_state_machine
+        queryset = MachineProcess.objects.latest('id_state_machine').id_state_machine
     except Exception as e:
         queryset = str(e)
         pass

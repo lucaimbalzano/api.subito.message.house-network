@@ -15,10 +15,11 @@ $ python3 -m venv env
 windows:
 $ .\env\Scripts\activate 
 linux:
-$source .\env\bin\activate
+$source ./env/bin/activate
 or 
-```
+
 (if you haven't pipenv)
+
 $ pipenv --python 3.10 install --dev
 then:
 $ pipenv shell
@@ -26,6 +27,7 @@ $ pipenv shell
 
 
 install all dependencies:
+
 ```
 $ pip install wheel
 $ pip install -r requirements.txt
@@ -67,9 +69,11 @@ $ django-admin startapp api
 ```
 
 make a file to edit db
+
 ```
 to get init DB use
 $ python3 manage.py makemigrations api
+$ python3 manage.py migrate 
 
 to apply all db structure use
 $ python3 manage.py migrate
