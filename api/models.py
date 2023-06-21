@@ -1,13 +1,17 @@
 
 
 import datetime
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
+from pytz import timezone as pytz_timezone
 from email.policy import default
 from enum import unique
 import random
-from django.db import models
-from django.utils.translation import gettext_lazy as _
-# Create your models here.
+
+
 class House(models.Model):
+    idHouse = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
     location = models.CharField(max_length=150, default='NOT SPECIFIED')
     number = models.CharField(max_length=20)
@@ -34,29 +38,32 @@ class House(models.Model):
     refDataAnnuncio = models.CharField(max_length=30)
     vetrina = models.BooleanField(default=False)
     advertising = models.CharField(max_length=100)
+    dateAdded = models.DateField(default=timezone.now().date())
     
     def __str__(self):
-        return self.nameUser
+        return f"{self.idHouse}"
 
 
 class Messages(models.Model):
-    messageName = models.CharField(max_length = 100)
-    dateAdded = models.DateTimeField(auto_now_add=True)
+    messageId = models.AutoField(primary_key=True)
+    dateSent = models.DateField(default=timezone.now().date())
+    dateTimeSent = models.TimeField(default=datetime.datetime.now().astimezone(pytz_timezone('Europe/Rome')).time())
     message = models.CharField(max_length=5000)
-    numberSent = models.ForeignKey(House, on_delete = models.CASCADE)
+    house = models.ManyToManyField(House)
+    options = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.messageName
+         return f"{self.messageId} - {self.dateSent} - {self.message}"
 
 
 class TimeManager(models.Model):
-    messageName = models.CharField(max_length = 100)
-    dateAdded = models.DateTimeField(auto_now_add=True)
-    message = models.CharField(max_length=5000)
-    numberSent = models.ForeignKey(House, on_delete = models.CASCADE)
-
+    idTimeManager = models.AutoField(primary_key=True)
+    workAgentState  = models.CharField(max_length=20)
+    cycleAgent  = models.CharField(max_length=20)
+    numberCycle = models.IntegerField()
+    
     def __str__(self):
-        return self.messageName
+        return f"{self.idTimeManager} - {self.workAgentState}"
 
 class MachineProcess(models.Model):
     class StatesType(models.TextChoices):
@@ -65,28 +72,26 @@ class MachineProcess(models.Model):
        STOP = 'STOP', _('STOP')
     
     idStateMachine = models.AutoField(primary_key=True)
-    # state = models.CharField(max_length=10)
     state = models.CharField(choices=StatesType.choices,default=StatesType.STOP, max_length=50)
-    startedDate = models.DateTimeField(default=datetime.datetime.now)
-    startedDateTime = models.TimeField(default=datetime.datetime.now)
-    finishDate = models.DateTimeField(default=datetime.datetime.now) 
-    finishDateTIme = models.TimeField()
+    startedDate = models.DateField(default=timezone.now().date())
+    startedDateTime = models.TimeField(default=datetime.datetime.now().astimezone(pytz_timezone('Europe/Rome')).time())
+    finishDate =  models.DateField(null=True, blank=True) 
+    finishDateTIme = models.TimeField(null=True, blank=True)
     def __str__(self):
-        return self.state
+        return f"{self.idStateMachine} - {self.startedDate}:{self.startedDateTime} - {self.state}"
 
 class TrackProcess(models.Model):
-    # default_idProc = 'ID::'+ str(datetime.datetime.now()).split(' ')[0]+'-'+str(random.randrange(999, 999999))
     identifierProcess = models.AutoField(primary_key=True)
     numPage = models.IntegerField(default=20)
     numCard = models.IntegerField(default=33)
-    urlLastPage = models.IntegerField(max_length=200)
-    urlLastCard = models.IntegerField(max_length=200)
+    urlLastPage = models.CharField(max_length=250)
+    urlLastCard = models.CharField(max_length=250)
     options = models.CharField(max_length=200, default=None, blank=True, null=True)
     errorStack = models.CharField(max_length=10000, default='NO ERROR')
     machine = models.OneToOneField(MachineProcess, on_delete = models.CASCADE, unique=True)
 
     def __str__(self):
-        return self.options
+        return f"{self.identifierProcess}"
     
 
 
@@ -94,7 +99,7 @@ class UrlTrackProcess(models.Model):
     id_url_track_process = models.AutoField(primary_key=True)
     url_page = models.CharField(max_length=300)
     url_card = models.CharField(max_length=300)
-    dateStarted = models.DateTimeField(default=datetime.datetime.now)
+    dateStarted = models.DateField(default=datetime.datetime.now)
     seconds_execution = models.CharField(max_length=100, default=None, blank=True, null=True)
     minutes_execution = models.CharField(max_length=100, default=None, blank=True, null=True)
     def __str__(self):
