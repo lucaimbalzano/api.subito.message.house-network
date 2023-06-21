@@ -9,8 +9,8 @@ from requests import Response
 from rest_framework import generics
 
 from api.dto.res_api_house import HouseRequestDTOEncoder, HouseResponseDTO
-from .models import Messages, House, TrackProcess, MachineProcess
-from .serializers import MessagesSerializer, HouseSerializer, TrackProcessSerializer, StateMachineProcessSerializer
+from .models import Messages, House, TimeManager, TrackProcess, MachineProcess
+from .serializers import MessagesSerializer, HouseSerializer, TimeManagerSerializer, TrackProcessSerializer, StateMachineProcessSerializer
 from api import serializers
 
 
@@ -90,7 +90,7 @@ class StateMachineProcessDetail(generics.RetrieveUpdateDestroyAPIView):
 def latest_state_machine(self):
     queryset = None
     try:
-        queryset = MachineProcess.objects.latest('id_state_machine').id_state_machine
+        queryset = MachineProcess.objects.latest('idStateMachine').idStateMachine
     except Exception as e:
         queryset = str(e)
         pass
@@ -99,17 +99,14 @@ def latest_state_machine(self):
 
 
 
-
-
-
 class MessagesList(generics.ListCreateAPIView):
     serializer_class = MessagesSerializer
 
     def get_queryset(self):
-        queryset = Messages.objects.all()
-        house = self.request.query_params.get('house')
-        if house is not None:
-            queryset = queryset.filter(numberSent=house)
+        # queryset = Messages.objects.all()
+        # house = self.request.query_params.get('house')
+        # if house is not None:
+        #     queryset = queryset.filter(numberSent=house)
         return queryset
 
 
@@ -119,8 +116,26 @@ class MessagesDetail(generics.RetrieveUpdateDestroyAPIView):
     
 
 
+class TimeManagerList(generics.ListCreateAPIView):
+    serializer_class = TimeManagerSerializer
 
+    def get_queryset(self):
+        queryset = TimeManager.objects.all()
+        return queryset
 
+class TimeManagerDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = TimeManagerSerializer
+    queryset = Messages.objects.all()
+    
+def latest_time_manager(self):
+    queryset = None
+    try:
+        queryset = TimeManager.objects.latest('idTimeManager').idTimeManager
+    except Exception as e:
+        queryset = str(e)
+        pass
+    
+    return HttpResponse(queryset)
 
 
 class HouseList(generics.ListCreateAPIView):

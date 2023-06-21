@@ -61,7 +61,11 @@ class TimeManager(models.Model):
     workAgentState  = models.CharField(max_length=20)
     cycleAgent  = models.CharField(max_length=20)
     numberCycle = models.IntegerField()
-    
+    addedDate = models.DateField(default=timezone.now().date())
+    addedDateTime = models.TimeField(default=datetime.datetime.now().astimezone(pytz_timezone('Europe/Rome')).time())
+    updateDate = models.DateField(null=True, blank=True)
+    updateDateTime = models.TimeField(null=True, blank=True)
+   
     def __str__(self):
         return f"{self.idTimeManager} - {self.workAgentState}"
 
@@ -77,6 +81,8 @@ class MachineProcess(models.Model):
     startedDateTime = models.TimeField(default=datetime.datetime.now().astimezone(pytz_timezone('Europe/Rome')).time())
     finishDate =  models.DateField(null=True, blank=True) 
     finishDateTIme = models.TimeField(null=True, blank=True)
+    timeManager = models.OneToOneField(TimeManager, on_delete = models.CASCADE, unique=True)
+
     def __str__(self):
         return f"{self.idStateMachine} - {self.startedDate}:{self.startedDateTime} - {self.state}"
 

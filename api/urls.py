@@ -1,9 +1,13 @@
 from django.urls import path
-from .views import MessagesList, MessagesDetail, HouseList, HouseDetail, HouseCheckByNumber, HouseCheckByNumberAndAvertising, TrackProcessList, TrackProcessDetail, StateMachineProcessList, StateMachineProcessDetail
+from .views import MessagesList, MessagesDetail, HouseList, HouseDetail, HouseCheckByNumber, HouseCheckByNumberAndAvertising, TrackProcessList, TrackProcessDetail, StateMachineProcessList, StateMachineProcessDetail, TimeManagerList, TimeManagerDetail
 from api import views
 
 
 urlpatterns = [
+
+    path('timemanager/', TimeManagerList.as_view()),
+    path('timemanager/<int:pk>', TimeManagerDetail.as_view()),
+    path('timemanager/last/', views.latest_time_manager),
 
     path('track/', TrackProcessList.as_view()),
     path('track/<int:pk>', TrackProcessDetail.as_view()),

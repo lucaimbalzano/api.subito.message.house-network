@@ -1,6 +1,6 @@
 from dataclasses import fields
 from rest_framework import serializers
-from .models import Messages, House, TrackProcess, MachineProcess
+from .models import Messages, House, TrackProcess, MachineProcess, TimeManager
 
 class HouseSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,6 +23,12 @@ class TrackProcessSerializer(serializers.ModelSerializer):
 class StateMachineProcessSerializer(serializers.ModelSerializer):
     class Meta:
         model = MachineProcess
+        fields = ('__all__')
+
+
+class TimeManagerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TimeManager
         fields = ('__all__')
 
 
