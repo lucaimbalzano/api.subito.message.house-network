@@ -9,8 +9,8 @@ from requests import Response
 from rest_framework import generics
 
 from api.dto.res_api_house import HouseRequestDTOEncoder, HouseResponseDTO
-from .models import Messages, House, TimeManager, TrackProcess, MachineProcess
-from .serializers import MessagesSerializer, HouseSerializer, TimeManagerSerializer, TrackProcessSerializer, StateMachineProcessSerializer
+from .models import Messages, House, TimeManager, TrackProcess, MachineProcess, FlowInputScraperConfig
+from .serializers import MessagesSerializer, HouseSerializer, TimeManagerSerializer, TrackProcessSerializer, StateMachineProcessSerializer, FlowInputScraperConfigSerializer
 from api import serializers
 
 
@@ -27,6 +27,8 @@ def render(data,message,status_code, accepted_media_type=None, renderer_context=
         data = our_response_dict
 
         return json.dumps(data)
+
+
 
 
 class TrackProcessList(generics.ListCreateAPIView):
@@ -204,4 +206,12 @@ def HouseCheckByNumberAndVetrina(request, number_house, vetrina_house):
     queryset = House.objects.filter(reduce(operator.and_, q_list)).values()
     
     return HttpResponse(queryset)
-    
+
+
+class FlowInputScraperConfigList(generics.ListCreateAPIView):
+    serializer_class = FlowInputScraperConfigSerializer
+    queryset = FlowInputScraperConfig.objects.all()
+
+class FlowInputScraperConfigDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = FlowInputScraperConfigSerializer
+    queryset = FlowInputScraperConfig.objects.all()

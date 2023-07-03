@@ -1,6 +1,6 @@
 from dataclasses import fields
 from rest_framework import serializers
-from .models import Messages, House, TrackProcess, MachineProcess, TimeManager
+from .models import Messages, House, TrackProcess, MachineProcess, TimeManager, FlowInputScraperConfig
 
 class HouseSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,4 +31,8 @@ class TimeManagerSerializer(serializers.ModelSerializer):
         model = TimeManager
         fields = ('__all__')
 
+class FlowInputScraperConfigSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FlowInputScraperConfig
+        fields = ('__all__')
 

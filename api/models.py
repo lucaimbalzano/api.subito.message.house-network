@@ -4,6 +4,7 @@ import datetime
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from django.db.models import JSONField
 from pytz import timezone as pytz_timezone
 from email.policy import default
 from enum import unique
@@ -110,4 +111,34 @@ class UrlTrackProcess(models.Model):
     minutes_execution = models.CharField(max_length=100, default=None, blank=True, null=True)
     def __str__(self):
         return self.url_page
-    
+
+
+
+
+# {
+# 	"totNumPage":"11",
+# 	"totNumCards":"11",
+# 	"contract":"VENDITA",
+# 	"url":"http://localhost:3000/profile",
+# 	"username":"test@test.it",
+# 	"password":"password",
+# 	"refreshSearch":{
+# 						"poolPage":"12",
+# 						"poolCards":"12",
+# 						"perTimeRange":"11"
+# 	},
+# 	"message":true,
+# 	"messageWebSite":false
+# }
+
+class FlowInputScraperConfig(models.Model):
+    id_flow_input_scraper_config = models.AutoField(primary_key=True)
+    totNumPage = models.CharField(max_length=4)
+    totNumCards = models.CharField(max_length=4)
+    contract = models.CharField(max_length=10)
+    url = models.CharField(max_length=300)
+    username = models.CharField(max_length=30)
+    password = models.CharField(max_length=30)
+    refreshSearch = JSONField()
+    message = models.BooleanField()
+    messageWebSite = models.BooleanField()

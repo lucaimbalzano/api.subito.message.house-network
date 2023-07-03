@@ -1,9 +1,12 @@
 from django.urls import path
-from .views import MessagesList, MessagesDetail, HouseList, HouseDetail, HouseCheckByNumber, HouseCheckByNumberAndAvertising, TrackProcessList, TrackProcessDetail, StateMachineProcessList, StateMachineProcessDetail, TimeManagerList, TimeManagerDetail
+from .views import MessagesList, MessagesDetail, HouseList, HouseDetail, HouseCheckByNumber, HouseCheckByNumberAndAvertising, TrackProcessList, TrackProcessDetail, StateMachineProcessList, StateMachineProcessDetail, TimeManagerList, TimeManagerDetail, FlowInputScraperConfigDetail, FlowInputScraperConfigList
 from api import views
 
 
 urlpatterns = [
+
+    path('scraper/config', FlowInputScraperConfigList.as_view()),
+    path('scraper/config/<int:pk>', FlowInputScraperConfigDetail.as_view()),
 
     path('timemanager/', TimeManagerList.as_view()),
     path('timemanager/<int:pk>', TimeManagerDetail.as_view()),

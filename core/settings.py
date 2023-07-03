@@ -93,7 +93,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://localhost:8000",
     "http://127.0.0.1:9000",
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "http://127.0.0.1:8000",
 ]
 
 CORS_ALLOW_METHODS = [
@@ -117,6 +118,8 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
