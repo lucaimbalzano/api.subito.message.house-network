@@ -40,6 +40,7 @@ class House(models.Model):
     vetrina = models.BooleanField(default=False)
     advertising = models.CharField(max_length=100)
     dateAdded = models.DateField(default=timezone.now().date())
+    dateTimeAdded = models.TimeField(default=datetime.datetime.now().astimezone(pytz_timezone('Europe/Rome')).time())
     
     def __str__(self):
         return f"{self.idHouse}"
@@ -102,35 +103,6 @@ class TrackProcess(models.Model):
     
 
 
-class UrlTrackProcess(models.Model):
-    id_url_track_process = models.AutoField(primary_key=True)
-    url_page = models.CharField(max_length=300)
-    url_card = models.CharField(max_length=300)
-    dateStarted = models.DateField(default=datetime.datetime.now)
-    seconds_execution = models.CharField(max_length=100, default=None, blank=True, null=True)
-    minutes_execution = models.CharField(max_length=100, default=None, blank=True, null=True)
-    def __str__(self):
-        return self.url_page
-
-
-
-
-# {
-# 	"totNumPage":"11",
-# 	"totNumCards":"11",
-# 	"contract":"VENDITA",
-# 	"url":"http://localhost:3000/profile",
-# 	"username":"test@test.it",
-# 	"password":"password",
-# 	"refreshSearch":{
-# 						"poolPage":"12",
-# 						"poolCards":"12",
-# 						"perTimeRange":"11"
-# 	},
-# 	"message":true,
-# 	"messageWebSite":false
-# }
-
 class FlowInputScraperConfig(models.Model):
     id_flow_input_scraper_config = models.AutoField(primary_key=True)
     totNumPage = models.CharField(max_length=4)
@@ -142,3 +114,7 @@ class FlowInputScraperConfig(models.Model):
     refreshSearch = JSONField()
     message = models.BooleanField()
     messageWebSite = models.BooleanField()
+    default = models.BooleanField()
+
+
+
