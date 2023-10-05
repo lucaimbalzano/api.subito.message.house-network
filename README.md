@@ -1,6 +1,6 @@
 # api.subito.message.house-network  <img src="https://user-images.githubusercontent.com/45575898/184987964-64477382-1df1-4512-9b77-9d6ec0eef470.jpg" width="60" height="60" />
 
-webscraper-engine module for real-estate on subito.it
+middleware-engine used as relation with dbe for real-estate on subito.it
 
 clone repository and move in:
 ```
@@ -82,6 +82,36 @@ $ python3 manage.py migrate
 
 local pswd pgAdmin
 postgres
+
+
+
+Docker:
+```
+$  docker build --no-cache -t web .
+$ docker-compose --env-file .env up
+
+
+$ docker build --no-cache -t web -f ./docker/images/app/Dockerfile .
+
+give first permission to our volume db data
+$ sudo chmod -R 777 ./docker/sql/
+$ sudo chmod -R 777 ./postgresdb/data
+$ docker build --no-cache -t house-net-api.postgres -f ./docker/images/postgres/Dockerfile .
+
+env UID=${UID} GID=${GID} docker-compose -f ./docker/docker-compose.yml --env-file .env up
+$ docker-compose -f ./docker/docker-compose.yml --env-file .env up
+```
+
+
+
+
+
+
+
+last:
+https://stackoverflow.com/questions/70091829/backend-docker-image-does-not-wait-until-db-becomes-available
+
+
 
 
 ᵈᵉᵛᵉˡᵒᵖᵉᵈ ᵇʸ 𝙡𝙪𝙘𝙖𝙞𝙢𝙗𝙖𝙡𝙯𝙖𝙣𝙤@𝙜𝙢𝙖𝙞𝙡.𝙘𝙤𝙢
