@@ -80,36 +80,15 @@ $ python3 manage.py migrate
 
 ```
 
-local pswd pgAdmin
+local pswd pgAdmin without docker:
 postgres
 
 
 
 Docker:
 ```
-$  docker build --no-cache -t web .
-$ docker-compose --env-file .env up
-
-
-$ docker build --no-cache -t web -f ./docker/images/app/Dockerfile .
-
-give first permission to our volume db data
-$ sudo chmod -R 777 ./docker/sql/
-$ sudo chmod -R 777 ./postgresdb/data
-$ docker build --no-cache -t house-net-api.postgres -f ./docker/images/postgres/Dockerfile .
-
-env UID=${UID} GID=${GID} docker-compose -f ./docker/docker-compose.yml --env-file .env up
-$ docker-compose -f ./docker/docker-compose.yml --env-file .env up
+$ docker-compose  up
 ```
-
-
-
-
-
-
-
-last:
-https://stackoverflow.com/questions/70091829/backend-docker-image-does-not-wait-until-db-becomes-available
 
 
 
