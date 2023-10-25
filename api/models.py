@@ -31,7 +31,7 @@ class House(models.Model):
     energyUnit = models.CharField(max_length=30)
     urlUserProfile = models.CharField(max_length=1000)
     nameUser = models.CharField(max_length=200)
-    otherCharacteristics = models.CharField(max_length=80)
+    otherCharacteristics = models.CharField(max_length=300)
     condominiumExpenses = models.CharField(max_length=30)
     caution = models.CharField(max_length=30)
     statusApartment = models.CharField(max_length=30)
